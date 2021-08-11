@@ -38,7 +38,7 @@ at the end run it and it is done your inputs are bound now.
 tbinder.run()
 ```
 
-**Multiple inputs into list**
+**Listst**
 
 Say you have multiple inputs that should appear as list
 
@@ -61,3 +61,17 @@ var txt="Here is our shopping list :[products]"
 tbinder.set_text(txt)
 ```
 The items will be separated with commas
+
+**Decorators**
+Decorators determine how your input should be changed before it appers on the text.
+Currently, there are 2 decorators availabe, which you can pass as a second parameter to set_prop function.
+They are 'date' and 'ucfirst'.
+```
+ tbinder2.set_prop('birth_date', 'date');
+ ```
+ when date decorator is passed like this it will transform your date input(which by default will have yyyy-mm-dd) format to dd.mm.yyyy format.
+ And ucfirst decorator will just capilatize the string. For example tashkent => Tashkent, TASHKENT=>Tashkent
+```
+tbinder2.set_prop('city', 'ucfirst');
+```
+Custom decorator functionality will be added soon.
