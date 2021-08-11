@@ -29,3 +29,7 @@ tbinder.set_prop('name');
 ```
 
 at the end run it and it is done your inputs are bound now.
+
+```
+tbinder.run()
+```
