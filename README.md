@@ -1,5 +1,6 @@
 # Tbinder
 Simple and tiny library to bind your input values to another html elements innerHTML
+
 First, add library to your project
 ```
 <script src="tbinder.js"></script>
