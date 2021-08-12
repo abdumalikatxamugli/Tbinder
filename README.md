@@ -74,4 +74,29 @@ They are 'date' and 'ucfirst'.
 ```
 tbinder2.set_prop('city', 'ucfirst');
 ```
-Custom decorator functionality will be added soon.
+**Custom decorators**
+
+you may pass your own functions as a decorator now.
+
+```
+ tbinder.set_prop('name', 'myFancyFnc');
+ 
+ function myFancyFnc(initialVal){
+  return 'Fancy' + initialVal;
+ }
+ ```
+ 
+ Of course you can pass multiple decorators as an array, they will be executed in the order in which you passed them
+ 
+ ```
+ tbinder.set_prop('name', ['myFancyFnc', 'greeterFnc']);
+ function myFancyFnc(initialVal){
+  return 'Fancy' + initialVal;
+ }
+ 
+ function greeterFnc(initialVal){
+  return 'Hello' + initialVal;
+ }
+ 
+ ```
+ 
