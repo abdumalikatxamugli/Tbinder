@@ -29,16 +29,31 @@ class TBinder{
                 }
             };
 
-            listen(node, event){
+             listen(node, event){
                 const identifier=node.dataset.id??node.id
                 if(event.target && (event.target.id==identifier ||event.target.dataset.id==identifier)){
                     if(this.prop2node[identifier].decorator){
-                        this.prop2node[identifier].val=this.decorators[this.prop2node[identifier].decorator](event.target.value);
+                        if(Array.isArray(this.prop2node[identifier].decorator)){
+                          var val=event.target.value;
+                          for(const decorator of this.prop2node[identifier].decorator){
+                             val=this.exec_decorators(identifier, val, decorator)
+                          }
+                        }else{
+                            this.exec_decorators(identifier, event.target.value,  this.prop2node[identifier].decorator)
+                        }
                     }else{
                         this.prop2node[identifier].val=event.target.value;
                     }
                 }
                 this.evaluate_text();
+            }
+            exec_decorators(identifier, value, decorator){
+                if(this.decorators[decorator]){
+                    this.prop2node[identifier].val=this.decorators[decorator](value);
+                }else{
+                    this.prop2node[identifier].val=window[decorator](value);
+                }
+                return this.prop2node[identifier].val
             }
 
             listen_multi(index, key, className, event){
